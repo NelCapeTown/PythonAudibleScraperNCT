@@ -1,6 +1,6 @@
 # Python Audible Scraper
 
-This repository contains scripts for scraping data from the user's Audible library while handling authentication. The goal of this project is to gather information about audiobooks, including their metadata, cover images, and other related details.
+This repository contains scripts for scraping data from the user's Audible library while handling authentication. It contains very basic functionality and was the project with which I first dipped my toe into the pool of web-scraping. The goal of this project is to gather information about audiobooks, including their metadata, cover images, and other related details.
 
 ## Features
 
@@ -31,6 +31,7 @@ This script is responsible for:
 ## Installation
 
 Clone the repository and install the dependencies:
+
 ```PowerShell
 git clone https://github.com/NelCapeTown/PythonAudibleScraperNCT
 cd PythonAudibleScraperNCT

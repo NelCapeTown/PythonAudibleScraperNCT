@@ -1,0 +1,15 @@
+{
+    "data_folder": "E:/src/Python/ScrapeAudible/Audible_Data",
+    "logging_folder": "E:/src/Python/ScrapeAudible/Logs",
+    "log_file": "audible_scraper.log",
+    "log_level": "INFO",
+    "auth_file": "auth.json",
+    "output_json_file": "books.json",
+    "output_excel_file": "books.xlsx",
+    "images_folder": "images",
+    "audible_library_url": "https://www.audible.com/library/titles",
+    "max_image_download_retries": 5,
+    "delay_between_retries_seconds": 10,
+    "page_timeout_milliseconds": 60000,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
+}
