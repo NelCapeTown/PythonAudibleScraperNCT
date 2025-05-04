@@ -1,15 +1,45 @@
 # Required Libraries:
 import os
 import json
+import logging
+from typing import Optional, Tuple
 from openpyxl import Workbook
 from openpyxl.styles import Alignment
 from openpyxl.drawing.image import Image as OpenpyxlImage
 from urllib.parse import urlparse
 from book import Book
+from audiblescrapernct.configuration import Configuration #
+from audiblescrapernct.load_config import load_config #
 
-DESTINATION_JSON_FILE = "audible_books.json"
-IMAGES_FOLDER = "images"
-OUTPUT_EXCEL_FILE = "AudibleLibrary.xlsx"
+logger = logging.getLogger(__name__)
+
+# def ensure_directory_exists(path: str) -> None:
+def setup_environment(config: Configuration) -> Tuple[str, str, str]:
+    """
+    Creates necessary directories (if needed) and returns key file paths.
+    
+    Args: 
+        config: Configuration object containing paths and settings.
+    """
+    # Configuration.from_dict already makes paths absolute
+    logger.info("Setting up environment...")
+    json_input_path = os.path.normpath(os.path.join(config.data_folder, config.output_json_file))
+    logger.info(f"JSON input path (for reading the previously created json file containing all the items in your library): {json_input_path}")
+    excel_output_path = os.path.normpath(os.path.join(config.data_folder, config.output_markdown_file))
+    logger.info(f"The Excel file that will be created: {excel_output_path}")
+    images_path = os.path.normpath(config.images_folder)
+    logger.info(f"Images save path from, where to read images for creating the markdown file: {images_path}")
+
+    try:
+        # data_folder is already created by Configuration logic if relative
+        os.makedirs(images_path, exist_ok=True)
+        logger.info(f"✅ Data directory: '{config.data_folder}'") #
+        logger.info(f"✅ Images directory: '{images_path}'") #
+    except OSError as e:
+        logger.error(f"❌ Error ensuring directories exist: {repr(e)}. Check permissions.")
+        raise # Re-raise the error to stop execution
+    return json_input_path, images_path, excel_output_path
+
 
 def read_json_file() -> list[Book]:
     """Reads book data from the predefined JSON file and deserializes it into Book objects.

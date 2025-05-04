@@ -1,8 +1,8 @@
-# scripts/create_markdown_output.py
+# scripts/create_excel_output.py
 import logging
 import os
 from audiblescrapernct.load_config import load_config
-from audiblescrapernct.create_markdown import export_markdown
+from audiblescrapernct.create_excel import create_audible_library_excel
 from audiblescrapernct.configuration import Configuration
 from audiblescrapernct.init_logging import setup_logging
 
@@ -21,9 +21,9 @@ def main() -> None:
         return
 
     try:
-        logger.info("Starting Markdown export process...")
-        export_markdown(config)
-        logger.info("Markdown export process completed.")
+        logger.info("Starting Excel export process...")
+        create_audible_library_excel(config)
+        logger.info("Excel export process completed.")
     except KeyboardInterrupt:
         logger.warning("Markdown export process interrupted by user.")
     except Exception as e:

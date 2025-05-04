@@ -11,14 +11,20 @@ logger = logging.getLogger(__name__)
 
 # def ensure_directory_exists(path: str) -> None:
 def setup_environment(config: Configuration) -> Tuple[str, str, str]:
-    """Creates necessary directories (if needed) and returns key file paths."""
+    """
+    Creates necessary directories (if needed) and returns key file paths.
+    
+    Args: 
+        config: Configuration object containing paths and settings.
+    """
     # Configuration.from_dict already makes paths absolute
     logger.info("Setting up environment...")
     json_input_path = os.path.normpath(os.path.join(config.data_folder, config.output_json_file))
+    logger.info(f"JSON input path (for reading the previously created json file containing all the items in your library): {json_input_path}")
     markdown_output_path = os.path.normpath(os.path.join(config.data_folder, config.output_markdown_file))
-    logger.info(f"JSON input path: {json_input_path}")
+    logger.info(f"The markdown file that will be created: {markdown_output_path}")
     images_path = os.path.normpath(config.images_folder)
-    logger.info(f"Images save path: {images_path}")
+    logger.info(f"Images save path from, where to read images for creating the markdown file: {images_path}")
 
     try:
         # data_folder is already created by Configuration logic if relative
