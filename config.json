@@ -6,6 +6,7 @@
     "auth_file": "auth.json",
     "output_json_file": "books.json",
     "output_excel_file": "books.xlsx",
+    "output_markdown_file": "audible_books.md",
     "images_folder": "images",
     "audible_library_url": "https://www.audible.com/library/titles",
     "max_image_download_retries": 5,

@@ -14,6 +14,7 @@ class Configuration:
     auth_file: str
     output_json_file: str
     output_excel_file: str
+    output_markdown_file: str
     images_folder: str
     audible_library_url: str
     max_image_download_retries: int = 5
